@@ -4,7 +4,7 @@ import Button from "../common/ui/Button";
 export default function List() {
   const [isChecked, setIsChecked] = useState(true);
   const [isModify, setIsModify] = useState(false);
-
+  const [modifyText, setModifyText] = useState("");
   const refFocus = useRef();
 
   const checkBoxHandle = (e) => {
@@ -14,6 +14,10 @@ export default function List() {
 
   const modifyHandle = () => {
     setIsModify(!isModify);
+  };
+  const midifyInputHanle = (e) => {
+    const inputValue = e.target.value;
+    setModifyText(inputValue);
   };
 
   useEffect(() => {
@@ -31,7 +35,12 @@ export default function List() {
             onChange={checkBoxHandle}
           />
           {isModify ? (
-            <input type="text" ref={refFocus} defaultValue={"할일1"} />
+            <input
+              type="text"
+              ref={refFocus}
+              onChange={midifyInputHanle}
+              defaultValue={"할일1"}
+            />
           ) : (
             <span>할일1</span>
           )}
