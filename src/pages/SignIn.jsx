@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/common/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { vaildEmail, validPassword } from "../components/common/util/vaild";
+import { SIGN_IN } from "../service/api/api";
 export default function SignIn() {
   const navigate = useNavigate();
 
@@ -19,9 +20,10 @@ export default function SignIn() {
     email: email,
     password: password,
   };
-  const loginSubmit = (e) => {
+  const loginSubmit = async (e) => {
+    console.log("com", data);
     e.preventDefault();
-    console.log(data);
+    SIGN_IN(JSON.stringify(data));
   };
   const emailHandle = (e) => {
     const inputValue = e.target.value;

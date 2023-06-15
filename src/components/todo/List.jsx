@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../common/ui/Button";
+import { GET_TODO } from "../../service/api/api";
 
 export default function List() {
   const [isChecked, setIsChecked] = useState(true);
   const [isModify, setIsModify] = useState(false);
   const [modifyText, setModifyText] = useState("");
+  const [getData, setGetData] = useState("");
   const refFocus = useRef();
   const todoItem = [
     {
@@ -20,6 +22,11 @@ export default function List() {
       userId: 1,
     },
   ];
+  const getTodo = async () => {
+    const response = await GET_TODO();
+    setGetData(response);
+    console.log(response);
+  };
 
   const checkBoxHandle = (e) => {
     const res = e.target.checked;
@@ -33,6 +40,9 @@ export default function List() {
     const inputValue = e.target.value;
     setModifyText(inputValue);
   };
+  useEffect(() => {
+    // getTodo();
+  }, []);
 
   useEffect(() => {
     if (isModify === true) {
@@ -41,7 +51,7 @@ export default function List() {
   }, [isModify]);
   return (
     <ul>
-      {todoItem.map((i) => (
+      {todoItem?.map((i) => (
         <li key={i.id}>
           <label>
             <input

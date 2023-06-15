@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import Button from "../common/ui/Button";
+import { POST_TODO } from "../../service/api/api";
 
 export default function Create() {
   const ref = useRef();
   const createHandle = (e) => {
     e.preventDefault();
+
     const refValue = ref.current.value;
-    console.log(refValue);
+    const data = { todo: refValue };
+    POST_TODO(JSON.stringify(data));
     ref.current.value = "";
   };
 
