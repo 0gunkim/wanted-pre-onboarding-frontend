@@ -5,7 +5,7 @@ export default function Button(props) {
   return (
     <button
       type={type}
-      data-testid={test_id}
+      data-testid={`${test_id}-button`}
       onClick={onClick}
       disabled={disabled}
     >

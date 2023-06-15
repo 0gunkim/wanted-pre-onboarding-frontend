@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/common/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { vaildEmail, validPassword } from "../components/common/util/vaild";
@@ -10,6 +10,10 @@ export default function SignIn() {
 
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
+
+  const [isDisable, setIsDisable] = useState(true);
+
+  const refFocus = useRef();
 
   const data = {
     email: email,
@@ -29,10 +33,15 @@ export default function SignIn() {
     const inputValue = e.target.value;
     setPassword(inputValue);
     const isVaildPassword = validPassword(inputValue);
-    console.log(isVaildPassword);
     setIsPassword(isVaildPassword);
   };
 
+  useEffect(() => {
+    if (isEmail === true && isPassword === true) {
+      return setIsDisable(false);
+    }
+    refFocus.current.focus();
+  }, [isEmail, isPassword]);
   const moveSignUp = () => {
     navigate("/signup");
   };
@@ -45,6 +54,7 @@ export default function SignIn() {
           id="email_input"
           onChange={emailHandle}
           autoComplete="email"
+          ref={refFocus}
         />
       </label>
       <label htmlFor="password_input">
@@ -57,11 +67,7 @@ export default function SignIn() {
           autoComplete="password"
         />
       </label>
-      <Button
-        test_id={"signin-button"}
-        label={"로그인"}
-        disabled={!isPassword}
-      />
+      <Button test_id={"signin"} label={"로그인"} disabled={isDisable} />
       <Button label={"회원가입하기"} type={"button"} onClick={moveSignUp} />
     </form>
   );
