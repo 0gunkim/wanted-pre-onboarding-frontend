@@ -6,6 +6,20 @@ export default function List() {
   const [isModify, setIsModify] = useState(false);
   const [modifyText, setModifyText] = useState("");
   const refFocus = useRef();
+  const todoItem = [
+    {
+      id: 1,
+      todo: "todo2",
+      isCompleted: false,
+      userId: 1,
+    },
+    {
+      id: 2,
+      todo: "todo3",
+      isCompleted: true,
+      userId: 1,
+    },
+  ];
 
   const checkBoxHandle = (e) => {
     const res = e.target.checked;
@@ -27,48 +41,50 @@ export default function List() {
   }, [isModify]);
   return (
     <ul>
-      <li>
-        <label>
-          <input
-            type="checkbox"
-            checked={isChecked}
-            onChange={checkBoxHandle}
-          />
-          {isModify ? (
+      {todoItem.map((i) => (
+        <li key={i.id}>
+          <label>
             <input
-              type="text"
-              ref={refFocus}
-              onChange={midifyInputHanle}
-              defaultValue={"할일1"}
+              type="checkbox"
+              checked={i.isCompleted}
+              onChange={checkBoxHandle}
             />
-          ) : (
-            <span>할일1</span>
-          )}
-          {isModify ? (
-            <Button test_id={"submit"} label={"제출"} onClick={modifyHandle} />
-          ) : (
-            <Button test_id={"modify"} label={"수정"} onClick={modifyHandle} />
-          )}
+            {isModify ? (
+              <input
+                type="text"
+                ref={refFocus}
+                onChange={midifyInputHanle}
+                defaultValue={"할일1"}
+              />
+            ) : (
+              <span>{i.todo}</span>
+            )}
+            {isModify ? (
+              <Button
+                test_id={"submit"}
+                label={"제출"}
+                onClick={modifyHandle}
+              />
+            ) : (
+              <Button
+                test_id={"modify"}
+                label={"수정"}
+                onClick={modifyHandle}
+              />
+            )}
 
-          {isModify ? (
-            <Button test_id={"cancel"} label={"취소"} onClick={modifyHandle} />
-          ) : (
-            <Button test_id={"delete"} label={"삭제"} />
-          )}
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" />
-          <span>할일2</span>
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" />
-          <span>할일3</span>
-        </label>
-      </li>
+            {isModify ? (
+              <Button
+                test_id={"cancel"}
+                label={"취소"}
+                onClick={modifyHandle}
+              />
+            ) : (
+              <Button test_id={"delete"} label={"삭제"} />
+            )}
+          </label>
+        </li>
+      ))}
     </ul>
   );
 }
