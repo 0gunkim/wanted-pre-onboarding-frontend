@@ -1,12 +1,11 @@
 import React from "react";
 import List from "../components/todo/List";
-import Create from "../components/todo/Create";
+import TodosContext from "../components/common/util/context/context";
 
 export default function Todo() {
   return (
-    <div>
+    <TodosContext>
       <List />
-      <Create />
-    </div>
+    </TodosContext>
   );
 }

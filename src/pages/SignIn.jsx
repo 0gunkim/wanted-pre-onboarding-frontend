@@ -5,15 +5,11 @@ import { vaildEmail, validPassword } from "../components/common/util/vaild";
 import { SIGN_IN } from "../service/api/api";
 export default function SignIn() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
-
   const [isDisable, setIsDisable] = useState(true);
-
   const refFocus = useRef();
 
   const data = {

@@ -37,18 +37,18 @@ export const POST_TODO = async (data) => {
   }
 };
 
-export const UPDATE_TODO = async (data, id) => {
+export const UPDATE_TODO = async (id, data) => {
   try {
     const response = await instance.put(`/todos/${id}`, data);
-    return response.data;
+    return response;
   } catch (e) {
     console.log(e);
   }
 };
 export const DELETE_TODO = async (id) => {
   try {
-    const response = await instance.put(`/todos/${id}`);
-    return response.data;
+    const response = await instance.delete(`/todos/${id}`);
+    return response;
   } catch (e) {
     console.log(e);
   }
