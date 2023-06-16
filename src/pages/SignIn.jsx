@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/common/ui/Button";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import {
   vaildEmail,
   validPassword,
@@ -42,6 +42,12 @@ export default function SignIn() {
     const isVaildPassword = validPassword(inputValue);
     setIsPassword(isVaildPassword);
   };
+  // useEffect(() => {
+  //   console.log(typeof isToken);
+  //   if (typeof isToken === String) {
+  //     redirect("/todo");
+  //   }
+  // }, [isToken]);
   useEffect(() => {
     if (isEmail === true && isPassword === true) {
       return setIsDisable(false);

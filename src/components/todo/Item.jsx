@@ -25,11 +25,13 @@ function Item({ item }) {
     dispatch({ type: "DELETE_TODO", payload: id });
   };
   const checkBoxHandle = async (e) => {
+    console.log(item.id);
     const inputCheckBox = e.target.checked;
     const id = item.id;
     const editData = { todo: item.todo, isCompleted: inputCheckBox };
     await UPDATE_TODO(id, editData);
-    setIsChecked(inputCheckBox);
+    dispatch({ type: "EDIT_TODO", payload: { data: editData, id } });
+    // setIsChecked(inputCheckBox);
   };
   useEffect(() => {
     if (isModify === true) {
@@ -43,7 +45,7 @@ function Item({ item }) {
           <input
             className="w-[20px] h-[20px]"
             type="checkbox"
-            checked={state.isCompleted}
+            checked={item.isCompleted}
             onChange={checkBoxHandle}
           />
           {isModify ? (
