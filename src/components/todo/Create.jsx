@@ -23,8 +23,13 @@ export default function Create() {
     ref.current.focus();
   }, []);
   return (
-    <form onSubmit={createHandle}>
-      <input ref={ref} type="text" />
+    <form onSubmit={createHandle} className="flex gap-2 justify-center">
+      <input
+        ref={ref}
+        data-testid="new-todo-input"
+        type="text"
+        className="w-[300px]"
+      />
       <Button test_id={"new-todo-add"} label={"추가"} />
     </form>
   );

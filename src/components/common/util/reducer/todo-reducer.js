@@ -1,7 +1,7 @@
 export const todoReducer = (state, action) => {
   switch (action.type) {
     case "GET_TODO":
-      return action.payload;
+      return action.payload.length === 0 ? state : state.concat(action.payload);
     case "POST_TODO":
       const newTodo = action.payload;
       return [...state, newTodo];
