@@ -6,6 +6,7 @@ export const SIGN_IN = async (data) => {
     const response = await instance.post("auth/signin", data);
     const token = response.data.access_token;
     localStorage.setItem("access_token", token);
+    return response;
   } catch (e) {
     console.log(e);
   }
@@ -13,6 +14,7 @@ export const SIGN_IN = async (data) => {
 export const SIGN_UP = async (data) => {
   try {
     const response = await instance.post("auth/signup", data);
+    return response;
   } catch (e) {
     console.log(e);
   }

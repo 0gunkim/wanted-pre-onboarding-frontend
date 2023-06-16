@@ -6,10 +6,22 @@ export const TodoContext = createContext();
 
 const initialTodo = [
   {
-    id: 1,
-    todo: "투두리스트 입니다",
+    id: 4235234,
+    todo: "투두리스트 1",
     isCompleted: true,
-    userId: 3,
+    userId: 99990,
+  },
+  {
+    id: 11231234,
+    todo: "투두리스트 2",
+    isCompleted: true,
+    userId: 99990,
+  },
+  {
+    id: 23423523,
+    todo: "투두리스트 3",
+    isCompleted: true,
+    userId: 99990,
   },
 ];
 

@@ -11,8 +11,7 @@ function Item({ item }) {
   const dispatch = useContext(DispatchContext);
   const editHandle = async (id) => {
     const editData = { todo: refFocus.current.value, isCompleted: isChecked };
-    const response = await UPDATE_TODO(id, editData);
-    console.log(response);
+    await UPDATE_TODO(id, editData);
     dispatch({ type: "EDIT_TODO", payload: { data: editData, id } });
     setIsModify(!isModify);
   };
@@ -21,39 +20,44 @@ function Item({ item }) {
     setIsModify(!isModify);
   };
   const deleteHandle = async (id) => {
-    const response = await DELETE_TODO(id);
-    console.log(response);
-    if (response.status === 204) {
-      dispatch({ type: "DELETE_TODO", payload: id });
-    }
+    await DELETE_TODO(id);
+
+    dispatch({ type: "DELETE_TODO", payload: id });
   };
   const checkBoxHandle = async (e) => {
     const inputCheckBox = e.target.checked;
     const id = item.id;
     const editData = { todo: item.todo, isCompleted: inputCheckBox };
-    const response = await UPDATE_TODO(id, editData);
-    console.log(response);
+    await UPDATE_TODO(id, editData);
     setIsChecked(inputCheckBox);
   };
   useEffect(() => {
     if (isModify === true) {
       refFocus.current.focus();
     }
-  }, [isModify, state, isChecked]);
+  }, [isModify, isChecked]);
   return (
     <>
-      <li>
-        <label>
+      <li className="flex gap-1 w-[420px] justify-between border-solid border-black border-2 p-2">
+        <label className="flex gap-5 justify-center items-center">
           <input
+            className="w-[20px] h-[20px]"
             type="checkbox"
             checked={state.isCompleted}
             onChange={checkBoxHandle}
           />
           {isModify ? (
-            <input type="text" ref={refFocus} defaultValue={item?.todo} />
+            <input
+              className="flex flex-col mr-0 w-60 h-10"
+              type="text"
+              ref={refFocus}
+              defaultValue={item?.todo}
+            />
           ) : (
             <span>{item?.todo}</span>
           )}
+        </label>
+        <div className="flex gap-2 shrink-0">
           {isModify ? (
             <Button
               test_id={"submit"}
@@ -73,7 +77,7 @@ function Item({ item }) {
               label={"삭제"}
             />
           )}
-        </label>
+        </div>
       </li>
     </>
   );
