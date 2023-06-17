@@ -12,7 +12,11 @@ export default function Todo() {
     await localStorage.removeItem("access_token");
     navigate("/", { replace: true });
   };
-
+  useEffect(() => {
+    if (!isToken) {
+      navigate("/signin");
+    }
+  }, [isToken]);
   return (
     <div className="flex flex-col items-center">
       <Layout>

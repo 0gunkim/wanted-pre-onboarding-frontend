@@ -29,10 +29,6 @@ export default function SignIn() {
         setStatus(true);
         return navigate("/todo", { replace: true });
       }
-      // setTimeout(() => {
-      // if (isStatus) {
-      // }
-      // }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -56,11 +52,7 @@ export default function SignIn() {
   };
   useEffect(() => {
     if (isStatus) {
-      console.log(1);
-      console.log(isStatus);
       navigate("/todo", { replace: true });
-      console.log(isStatus);
-      console.log(2);
     }
   }, [isStatus]);
 

@@ -11,13 +11,11 @@ const isToken = localStorage.getItem("access_token");
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: isToken ? <Navigate to="/todo" replace /> : <SignIn />,
     element: <Navigate to="/signin" />,
   },
   {
     path: "/signin",
     element: isToken ? <Navigate to="/todo" replace /> : <SignIn />,
-    // element: <SignIn />,
   },
   {
     path: "/signup",
@@ -25,7 +23,6 @@ const router = createBrowserRouter([
   },
   {
     path: "/todo",
-    // element: isToken ? <Todo /> : <Navigate to="/signin" replace />,
     element: <Todo />,
   },
 ]);
