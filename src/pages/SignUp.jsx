@@ -60,7 +60,7 @@ export default function SignUp() {
               data-testid="email-input"
               id="email_input"
               onChange={emailHandle}
-              autoComplete="email"
+              autoComplete="off"
               ref={refFocus}
             />
           </label>
