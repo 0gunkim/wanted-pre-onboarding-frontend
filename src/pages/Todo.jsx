@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 export default function Todo() {
   const navigate = useNavigate();
   const isToken = localStorage.getItem("access_token");
-  console.log(isToken);
   const logoutHandle = async () => {
     await localStorage.removeItem("access_token");
     navigate("/", { replace: true });
