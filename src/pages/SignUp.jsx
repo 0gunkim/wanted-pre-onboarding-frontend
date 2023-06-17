@@ -1,24 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../components/common/ui/Button";
+import Layout from "../components/common/Layout";
 import { useNavigate } from "react-router-dom";
+import { SIGN_UP } from "../service/api/api";
 import {
   vaildEmail,
   validPassword,
 } from "../components/common/util/vaild/vaild";
-import Layout from "../components/common/Layout";
-import { SIGN_UP } from "../service/api/api";
 export default function SignUp() {
-  const navigate = useNavigate();
-
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-
-  const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
-
   const [isDisable, setIsDisable] = useState(true);
-
+  const [isEmail, setIsEmail] = useState(false);
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
+  const navigate = useNavigate();
   const refFocus = useRef();
+
   const data = {
     email: email,
     password: password,

@@ -60,7 +60,7 @@ export default function SignIn() {
     if (isEmail === true && isPassword === true) {
       return setIsDisable(false);
     }
-    // refFocus.current.focus();
+    refFocus.current.focus();
   }, [isEmail, isPassword]);
 
   return (
@@ -78,7 +78,7 @@ export default function SignIn() {
               id="email_input"
               onChange={emailHandle}
               autoComplete="off"
-              // ref={refFocus}
+              ref={refFocus}
             />
           </label>
           <label htmlFor="password_input">

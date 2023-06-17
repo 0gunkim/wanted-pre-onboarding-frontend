@@ -9,7 +9,6 @@ export const todoReducer = (state, action) => {
       const todo = action.payload.data.todo;
       const isCompleted = action.payload.data.isCompleted;
       const editId = action.payload.id;
-      console.log(action.payload);
       return state.map((item) =>
         item.id === editId ? { ...item, todo, isCompleted } : item
       );

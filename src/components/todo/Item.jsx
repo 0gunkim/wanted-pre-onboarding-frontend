@@ -5,19 +5,20 @@ import { DELETE_TODO, UPDATE_TODO } from "../../service/api/api";
 
 function Item({ item }) {
   const refFocus = useRef();
-  const [isChecked, setIsChecked] = useState(true);
   const [isModify, setIsModify] = useState(false);
   const dispatch = useContext(DispatchContext);
 
   const editHandle = async (id) => {
-    const editData = { todo: refFocus.current.value, isCompleted: isChecked };
+    const editData = {
+      todo: refFocus.current.value,
+      isCompleted: item.isCompleted,
+    };
     await UPDATE_TODO(id, editData);
     dispatch({ type: "EDIT_TODO", payload: { data: editData, id } });
     setIsModify(!isModify);
   };
 
   const checkBoxHandle = async (e) => {
-    console.log(item.id);
     const inputCheckBox = e.target.checked;
     const id = item.id;
     const editData = { todo: item.todo, isCompleted: inputCheckBox };
@@ -38,7 +39,7 @@ function Item({ item }) {
     if (isModify === true) {
       refFocus.current.focus();
     }
-  }, [isModify, isChecked]);
+  }, [isModify]);
 
   return (
     <>

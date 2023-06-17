@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function List() {
   const state = useContext(TodoContext);
   const dispatch = useContext(DispatchContext);
+  const isToken = localStorage.getItem("access_token");
   const navigate = useNavigate();
 
   const getDispatch = async () => {
@@ -20,7 +21,11 @@ export default function List() {
   };
 
   useEffect(() => {
-    getDispatch();
+    if (isToken) {
+      getDispatch();
+    } else {
+      navigate("/signin", { replace: true });
+    }
   }, []);
 
   return (
