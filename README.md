@@ -34,7 +34,10 @@ npm start
 
 </br>
 
-https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/c96d0ad4-a3b1-44bc-9281-15e82ece6456
+
+
+
+https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/fe2e19cd-c631-41fc-8a49-6efbb2579fba
 
 
 </br>
@@ -44,7 +47,13 @@ https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/
 
 </br>
 
-https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/57b8d390-bc7c-4bd5-915b-29624bc7cc7c
+
+
+
+https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/17b8923f-752d-4601-9f9f-527ebbd4fa88
+
+
+
 
 
 
@@ -56,7 +65,10 @@ https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/
 </br>
 
 
-https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/83ca16dc-6073-4386-8c98-94604deed1fb
+
+
+https://github.com/Goldenprevue/wanted-pre-onboarding-frontend/assets/116594422/c85bc5ee-37a2-4db6-ac5e-f41a54f7319a
+
 
 
 
