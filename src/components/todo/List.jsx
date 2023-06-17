@@ -3,13 +3,20 @@ import Item from "./Item";
 import Create from "./Create";
 import { DispatchContext, TodoContext } from "../common/util/context/context";
 import { GET_TODO } from "../../service/api/api";
+import { useNavigate } from "react-router-dom";
 export default function List() {
   const state = useContext(TodoContext);
   const dispatch = useContext(DispatchContext);
+  const navigate = useNavigate();
 
   const getDispatch = async () => {
-    const response = await GET_TODO();
-    dispatch({ type: "GET_TODO", payload: response });
+    try {
+      const response = await GET_TODO();
+      dispatch({ type: "GET_TODO", payload: response });
+    } catch (e) {
+      navigate("/signin");
+      console.log(e);
+    }
   };
 
   useEffect(() => {

@@ -15,6 +15,7 @@ export default function SignIn() {
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
+  const [isStatus, setStatus] = useState(false);
   const refFocus = useRef();
   const loginSubmit = async (e) => {
     e.preventDefault();
@@ -24,11 +25,14 @@ export default function SignIn() {
     };
     try {
       const response = await SIGN_IN(JSON.stringify(data));
-      setTimeout(() => {
-        if (response.status === 200) {
-          navigate("/todo", { replace: true });
-        }
-      }, 500);
+      if (response.status === 200) {
+        setStatus(true);
+        return navigate("/todo", { replace: true });
+      }
+      // setTimeout(() => {
+      // if (isStatus) {
+      // }
+      // }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -50,12 +54,21 @@ export default function SignIn() {
   const moveSignUp = () => {
     navigate("/signup");
   };
+  useEffect(() => {
+    if (isStatus) {
+      console.log(1);
+      console.log(isStatus);
+      navigate("/todo", { replace: true });
+      console.log(isStatus);
+      console.log(2);
+    }
+  }, [isStatus]);
 
   useEffect(() => {
     if (isEmail === true && isPassword === true) {
       return setIsDisable(false);
     }
-    refFocus.current.focus();
+    // refFocus.current.focus();
   }, [isEmail, isPassword]);
 
   return (
@@ -73,7 +86,7 @@ export default function SignIn() {
               id="email_input"
               onChange={emailHandle}
               autoComplete="off"
-              ref={refFocus}
+              // ref={refFocus}
             />
           </label>
           <label htmlFor="password_input">
