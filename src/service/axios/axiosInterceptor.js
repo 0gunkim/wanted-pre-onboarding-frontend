@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  timeout: 5000,
+  timeout: 1000,
 });
 
 instance.interceptors.request.use(
@@ -23,10 +23,8 @@ instance.interceptors.response.use(
     return response;
   },
   (error) => {
-    const handleErrorResponse = (error) => {
-      console.error(error);
-      return Promise.reject(error);
-    };
+    console.error(error);
+    return Promise.reject(error);
   }
 );
 

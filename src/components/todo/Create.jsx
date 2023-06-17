@@ -1,12 +1,12 @@
-import React, { useReducer, useEffect, useRef, useContext } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import Button from "../common/ui/Button";
 import { POST_TODO } from "../../service/api/api";
-import { DispatchContext, TodoContext } from "../common/util/context/context";
+import { DispatchContext } from "../common/util/context/context";
 
 export default function Create() {
   const ref = useRef();
-  const state = useContext(TodoContext);
   const dispatch = useContext(DispatchContext);
+
   const createHandle = async (e) => {
     e.preventDefault();
     const refValue = ref.current.value;

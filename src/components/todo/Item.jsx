@@ -1,19 +1,28 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Button from "../common/ui/Button";
-import { DispatchContext, TodoContext } from "../common/util/context/context";
+import { DispatchContext } from "../common/util/context/context";
 import { DELETE_TODO, UPDATE_TODO } from "../../service/api/api";
 
 function Item({ item }) {
   const refFocus = useRef();
   const [isChecked, setIsChecked] = useState(true);
   const [isModify, setIsModify] = useState(false);
-  const state = useContext(TodoContext);
   const dispatch = useContext(DispatchContext);
+
   const editHandle = async (id) => {
     const editData = { todo: refFocus.current.value, isCompleted: isChecked };
     await UPDATE_TODO(id, editData);
     dispatch({ type: "EDIT_TODO", payload: { data: editData, id } });
     setIsModify(!isModify);
+  };
+
+  const checkBoxHandle = async (e) => {
+    console.log(item.id);
+    const inputCheckBox = e.target.checked;
+    const id = item.id;
+    const editData = { todo: item.todo, isCompleted: inputCheckBox };
+    await UPDATE_TODO(id, editData);
+    dispatch({ type: "EDIT_TODO", payload: { data: editData, id } });
   };
   const modifyHandle = (e) => {
     e.preventDefault();
@@ -24,20 +33,13 @@ function Item({ item }) {
 
     dispatch({ type: "DELETE_TODO", payload: id });
   };
-  const checkBoxHandle = async (e) => {
-    console.log(item.id);
-    const inputCheckBox = e.target.checked;
-    const id = item.id;
-    const editData = { todo: item.todo, isCompleted: inputCheckBox };
-    await UPDATE_TODO(id, editData);
-    dispatch({ type: "EDIT_TODO", payload: { data: editData, id } });
-    // setIsChecked(inputCheckBox);
-  };
+
   useEffect(() => {
     if (isModify === true) {
       refFocus.current.focus();
     }
   }, [isModify, isChecked]);
+
   return (
     <>
       <li className="flex gap-1 w-[420px] justify-between border-solid border-black border-2 p-2">

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Item from "./Item";
 import Create from "./Create";
 import { DispatchContext, TodoContext } from "../common/util/context/context";
@@ -15,6 +15,7 @@ export default function List() {
   useEffect(() => {
     getDispatch();
   }, []);
+
   return (
     <div className="flex-col flex gap-10 mx-auto justify-between ">
       <ul className="flex flex-col  gap-2 mt-10 p-5">

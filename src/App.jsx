@@ -12,11 +12,11 @@ const router = createBrowserRouter([
   {
     path: "/",
     // element: isToken ? <Navigate to="/todo" replace /> : <SignIn />,
-    element: <SignIn />,
+    element: <Navigate to="/signin" />,
   },
   {
     path: "/signin",
-    element: isToken ? <Navigate to="/todo" replace /> : <SignIn />,
+    element: isToken ? <Navigate to="/todo" /> : <SignIn />,
     // element: <SignIn />,
   },
   {
@@ -25,7 +25,6 @@ const router = createBrowserRouter([
   },
   {
     path: "/todo",
-    // element: isToken ? <Todo /> : <Navigate to="/signin" replace />,
     element: isToken ? <Todo /> : <Navigate to="/signin" />,
   },
 ]);
