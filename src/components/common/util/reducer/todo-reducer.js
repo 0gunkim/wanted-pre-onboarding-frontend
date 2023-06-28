@@ -9,12 +9,12 @@ export const todoReducer = (state, action) => {
       const todo = action.payload.data.todo;
       const isCompleted = action.payload.data.isCompleted;
       const editId = action.payload.id;
-      return state.map((item) =>
+      return state.map(item =>
         item.id === editId ? { ...item, todo, isCompleted } : item
       );
     case "DELETE_TODO":
       const id = action.payload;
-      return state.filter((item) => item.id !== id);
+      return state.filter(item => item.id !== id);
 
     default:
       return state;

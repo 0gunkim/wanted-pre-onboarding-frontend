@@ -15,10 +15,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "postinstall": "husky install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write --cache .",
+    "lint": "eslint --cache ."
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +42,9 @@
     ]
   },
   "devDependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8",
     "tailwindcss": "^3.3.2"
   }
 }
