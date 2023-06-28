@@ -6,23 +6,23 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(
-  (config) => {
+  config => {
     const access_token = localStorage.getItem("access_token");
     if (access_token) {
-      config.headers["Authorization"] = `Bearer ${access_token}`;
+      config.headers.Authorization = `Bearer ${access_token}`;
     }
     config.headers["Content-Type"] = "application/json";
     return config;
   },
-  (error) => {
+  error => {
     return Promise.reject(error);
   }
 );
 instance.interceptors.response.use(
-  (response) => {
+  response => {
     return response;
   },
-  (error) => {
+  error => {
     console.error(error);
     return Promise.reject(error);
   }
