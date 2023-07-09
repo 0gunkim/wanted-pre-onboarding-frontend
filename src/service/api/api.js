@@ -1,7 +1,7 @@
 import instance from "../axios/axiosInterceptor";
 
 /** AUTH */
-export const SIGN_IN = async (data) => {
+export const SIGN_IN = async data => {
   try {
     const response = await instance.post("auth/signin", data);
     const token = response.data.access_token;
@@ -11,7 +11,7 @@ export const SIGN_IN = async (data) => {
     console.log(e);
   }
 };
-export const SIGN_UP = async (data) => {
+export const SIGN_UP = async data => {
   try {
     const response = await instance.post("auth/signup", data);
     return response;
@@ -30,7 +30,7 @@ export const GET_TODO = async () => {
   }
 };
 
-export const POST_TODO = async (data) => {
+export const POST_TODO = async data => {
   try {
     const response = await instance.post("/todos", data);
     return response.data;
@@ -47,7 +47,7 @@ export const UPDATE_TODO = async (id, data) => {
     console.log(e);
   }
 };
-export const DELETE_TODO = async (id) => {
+export const DELETE_TODO = async id => {
   try {
     const response = await instance.delete(`/todos/${id}`);
     return response;

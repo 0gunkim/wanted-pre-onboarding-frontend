@@ -72,7 +72,7 @@ export default function SignIn() {
       >
         <div className="flex-col flex gap-4 items-center mb-10 ">
           <label className="flex flex-row gap-7" htmlFor="email_input">
-            <span className="">E-mail </span>
+            <span className="">E-mail :</span>
             <input
               className=""
               data-testid="email-input"
@@ -82,8 +82,8 @@ export default function SignIn() {
               ref={refFocus}
             />
           </label>
-          <label htmlFor="password_input">
-            <span>Password </span>
+          <label>
+            Password :{" "}
             <input
               type="password"
               data-testid="password-input"
