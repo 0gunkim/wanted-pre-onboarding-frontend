@@ -1,16 +1,23 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Button from "../common/ui/Button";
 import { DispatchContext } from "../common/util/context/context";
 import { DELETE_TODO, UPDATE_TODO } from "../../service/api/api";
+import { ItemPropsType } from "../../types/itemType";
 
-function Item({ item }) {
-  const refFocus = useRef();
+function Item({ item }: ItemPropsType) {
+  const refFocus = useRef<HTMLInputElement>(null);
   const [isModify, setIsModify] = useState(false);
   const dispatch = useContext(DispatchContext);
 
-  const editHandle = async (id) => {
+  const editHandle = async (id: number) => {
     const editData = {
-      todo: refFocus.current.value,
+      todo: refFocus.current?.value,
       isCompleted: item.isCompleted,
     };
     await UPDATE_TODO(id, editData);
@@ -18,18 +25,18 @@ function Item({ item }) {
     setIsModify(!isModify);
   };
 
-  const checkBoxHandle = async (e) => {
+  const toggleComplate = async (e: ChangeEvent<HTMLInputElement>) => {
     const inputCheckBox = e.target.checked;
     const id = item.id;
     const editData = { todo: item.todo, isCompleted: inputCheckBox };
     await UPDATE_TODO(id, editData);
     dispatch({ type: "EDIT_TODO", payload: { data: editData, id } });
   };
-  const modifyHandle = (e) => {
-    e.preventDefault();
+  const modifyHandle = () => {
+    // e.preventDefault();
     setIsModify(!isModify);
   };
-  const deleteHandle = async (id) => {
+  const deleteHandle = async (id: number) => {
     await DELETE_TODO(id);
 
     dispatch({ type: "DELETE_TODO", payload: id });
@@ -37,7 +44,7 @@ function Item({ item }) {
 
   useEffect(() => {
     if (isModify === true) {
-      refFocus.current.focus();
+      refFocus.current?.focus();
     }
   }, [isModify]);
 
@@ -49,7 +56,7 @@ function Item({ item }) {
             className="w-[20px] h-[20px]"
             type="checkbox"
             checked={item.isCompleted}
-            onChange={checkBoxHandle}
+            onChange={toggleComplate}
           />
           {isModify ? (
             <input

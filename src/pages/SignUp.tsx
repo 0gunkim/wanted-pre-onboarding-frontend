@@ -8,34 +8,35 @@ import {
   validPassword,
 } from "../components/common/util/vaild/vaild";
 export default function SignUp() {
+  //TODO
+  const [password, setPassword] = useState<string>();
+  const [email, setEmail] = useState<string>();
   const [isPassword, setIsPassword] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [isEmail, setIsEmail] = useState(false);
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
   const navigate = useNavigate();
-  const refFocus = useRef();
+  const refFocus = React.createRef<HTMLInputElement>();
 
   const data = {
     email: email,
     password: password,
   };
-  const signUpSubmit = async (e) => {
+  const signUpSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await SIGN_UP(data);
-    if (response.status === 201) {
+    if (response?.status === 201) {
       navigate("/");
     } else {
       alert("서버와 연결이 원할하지 않습니다");
     }
   };
-  const emailHandle = (e) => {
+  const emailHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setEmail(inputValue);
     const isVaildEmail = vaildEmail(inputValue);
     setIsEmail(isVaildEmail);
   };
-  const passwordHandle = (e) => {
+  const passwordHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setPassword(inputValue);
     const isVaildPassword = validPassword(inputValue);
@@ -45,7 +46,7 @@ export default function SignUp() {
     if (isEmail === true && isPassword === true) {
       return setIsDisable(false);
     }
-    refFocus.current.focus();
+    refFocus.current?.focus();
   }, [isEmail, isPassword]);
   return (
     <Layout>
