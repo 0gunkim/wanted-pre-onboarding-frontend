@@ -3,9 +3,7 @@ import {
   createBrowserRouter,
   Navigate,
 } from "react-router-dom";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import Todo from "./pages/Todo";
+import { SignInPage, SignUpPage, TodoPage } from "./pages/pageModules";
 const isToken = localStorage.getItem("access_token");
 
 const router = createBrowserRouter([
@@ -15,15 +13,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/signin",
-    element: isToken ? <Navigate to="/todo" replace /> : <SignIn />,
+    element: isToken ? <Navigate to="/todo" replace /> : <SignInPage />,
   },
   {
     path: "/signup",
-    element: isToken ? <Navigate to="/todo" /> : <SignUp />,
+    element: isToken ? <Navigate to="/todo" /> : <SignUpPage />,
   },
   {
     path: "/todo",
-    element: <Todo />,
+    element: <TodoPage />,
   },
 ]);
 function App() {

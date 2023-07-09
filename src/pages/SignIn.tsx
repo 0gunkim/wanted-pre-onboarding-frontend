@@ -10,14 +10,15 @@ import {
 
 export default function SignIn() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  //TODO
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
   const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [isStatus, setStatus] = useState(false);
-  const refFocus = useRef();
-  const loginSubmit = async (e) => {
+  const refFocus = React.createRef<HTMLInputElement>();
+  const loginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const data = {
       email: email,
@@ -25,7 +26,7 @@ export default function SignIn() {
     };
     try {
       const response = await SIGN_IN(JSON.stringify(data));
-      if (response.status === 200) {
+      if (response?.status === 200) {
         setStatus(true);
         return navigate("/todo", { replace: true });
       }
@@ -33,14 +34,14 @@ export default function SignIn() {
       console.log(error);
     }
   };
-  const emailHandle = (e) => {
+  const emailHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setEmail(inputValue);
     const isVaildEmail = vaildEmail(inputValue);
     setIsEmail(isVaildEmail);
   };
 
-  const passwordHandle = (e) => {
+  const passwordHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setPassword(inputValue);
     const isVaildPassword = validPassword(inputValue);
@@ -60,7 +61,7 @@ export default function SignIn() {
     if (isEmail === true && isPassword === true) {
       return setIsDisable(false);
     }
-    refFocus.current.focus();
+    refFocus.current?.focus();
   }, [isEmail, isPassword]);
 
   return (
