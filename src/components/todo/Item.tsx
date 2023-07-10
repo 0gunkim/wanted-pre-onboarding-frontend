@@ -5,8 +5,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Button from "../common/ui/Button";
-import { DispatchContext } from "../common/util/context/context";
+import Button from "../../common/ui/Button";
+import { DispatchContext } from "../../common/util/context/context";
 import { DELETE_TODO, UPDATE_TODO } from "../../service/api/api";
 import { ItemPropsType } from "../../types/itemType";
 

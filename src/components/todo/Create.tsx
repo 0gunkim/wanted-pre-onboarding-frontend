@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useContext } from "react";
-import Button from "../common/ui/Button";
+import Button from "../../common/ui/Button";
 import { POST_TODO } from "../../service/api/api";
-import { DispatchContext } from "../common/util/context/context";
+import { DispatchContext } from "../../common/util/context/context";
 
 export default function Create() {
   const ref = useRef<HTMLInputElement>(null);

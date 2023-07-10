@@ -1,23 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
-import Button from "../components/common/ui/Button";
+import Button from "../common/ui/Button";
 import { useNavigate } from "react-router-dom";
 import { SIGN_IN } from "../service/api/api";
-import Layout from "../components/common/Layout";
+import Layout from "../common/Layout";
 import {
-  vaildEmail,
+  validEmail,
   validPassword,
-} from "../components/common/util/vaild/vaild";
+} from "../common/util/validation/validation";
 
 export default function SignIn() {
   const navigate = useNavigate();
   //TODO
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
-  const [isEmail, setIsEmail] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const [isStatus, setStatus] = useState(false);
   const refFocus = React.createRef<HTMLInputElement>();
+  const isVaildEmail = validEmail(email);
   const loginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const data = {
@@ -37,8 +37,6 @@ export default function SignIn() {
   const emailHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setEmail(inputValue);
-    const isVaildEmail = vaildEmail(inputValue);
-    setIsEmail(isVaildEmail);
   };
 
   const passwordHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,13 +54,12 @@ export default function SignIn() {
       navigate("/todo", { replace: true });
     }
   }, [isStatus]);
-
   useEffect(() => {
-    if (isEmail === true && isPassword === true) {
+    if (isVaildEmail === true && isPassword === true) {
       return setIsDisable(false);
     }
     refFocus.current?.focus();
-  }, [isEmail, isPassword]);
+  }, [isVaildEmail, isPassword]);
 
   return (
     <Layout>
