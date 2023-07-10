@@ -4,7 +4,7 @@ import Layout from "../common/Layout";
 import { useNavigate } from "react-router-dom";
 import { SIGN_UP } from "../service/api/api";
 import {
-  vaildEmail,
+  validEmail,
   validPassword,
 } from "../common/util/validation/validation";
 export default function SignUp() {
@@ -13,7 +13,7 @@ export default function SignUp() {
   const [email, setEmail] = useState<string>();
   const [isPassword, setIsPassword] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
-  const [isEmail, setIsEmail] = useState(false);
+  const isValidEmail = validEmail(email);
   const navigate = useNavigate();
   const refFocus = React.createRef<HTMLInputElement>();
 
@@ -33,8 +33,6 @@ export default function SignUp() {
   const emailHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setEmail(inputValue);
-    const isVaildEmail = vaildEmail(inputValue);
-    setIsEmail(isVaildEmail);
   };
   const passwordHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -43,11 +41,11 @@ export default function SignUp() {
     setIsPassword(isVaildPassword);
   };
   useEffect(() => {
-    if (isEmail === true && isPassword === true) {
+    if (isValidEmail === true && isPassword === true) {
       return setIsDisable(false);
     }
     refFocus.current?.focus();
-  }, [isEmail, isPassword]);
+  }, [isValidEmail, isPassword]);
   return (
     <Layout>
       <form
