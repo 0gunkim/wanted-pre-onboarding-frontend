@@ -10,7 +10,7 @@ import {
 export default function SignUp() {
   //TODO
   const [password, setPassword] = useState<string>();
-  const [email, setEmail] = useState<string>();
+  const [email, setEmail] = useState<string>("");
   const [isPassword, setIsPassword] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
   const isValidEmail = validEmail(email);

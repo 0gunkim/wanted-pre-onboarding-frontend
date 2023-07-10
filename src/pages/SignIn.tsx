@@ -11,7 +11,7 @@ import {
 export default function SignIn() {
   const navigate = useNavigate();
   //TODO
-  const [email, setEmail] = useState<string>();
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>();
   const [isPassword, setIsPassword] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
