@@ -1,7 +1,7 @@
 import React from "react";
 import List from "../components/todo/List";
-import TodosContext from "../components/common/util/context/context";
-import Layout from "../components/common/Layout";
+import TodosContext from "../common/util/context/context";
+import Layout from "../common/Layout";
 
 export default function Todo() {
   return (

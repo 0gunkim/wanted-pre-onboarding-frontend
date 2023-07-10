@@ -1,4 +1,4 @@
-import { ButtonPropsType } from "../../../types/buttonType";
+import { ButtonPropsType } from "../../types/buttonType";
 export default function Button(props: ButtonPropsType) {
   const { type = "submit", test_id, label, onClick, disabled } = props;
   const baseStyle =

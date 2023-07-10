@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import Button from "../components/common/ui/Button";
-import Layout from "../components/common/Layout";
+import Button from "../common/ui/Button";
+import Layout from "../common/Layout";
 import { useNavigate } from "react-router-dom";
 import { SIGN_UP } from "../service/api/api";
 import {
   vaildEmail,
   validPassword,
-} from "../components/common/util/vaild/vaild";
+} from "../common/util/validation/validation";
 export default function SignUp() {
   //TODO
   const [password, setPassword] = useState<string>();
