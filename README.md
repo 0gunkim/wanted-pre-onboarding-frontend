@@ -1,22 +1,24 @@
 # TODO LIST
 
-#### 프론트엔드 김영건
+원티드 프리온보딩 선발과제
+
+- `개발자` :  프론트엔드 김영건
 
 
-#### 베포주소 : https://wanted-pre-onboarding-frontend-two-eta.vercel.app/
+- `배포` : https://wanted-pre-onboarding-frontend-two-eta.vercel.app/
 
 </br>
 
 
 # * 실행방법
 
-### npm install
+- ### 설치
 
 ```
 npm install
 ```
 
-### npm start
+- ### 실행
 
 ```
 npm start
@@ -26,8 +28,16 @@ npm start
 </br>
 </br>
 
-# * 기능 구현
-### Sign Up
+# * 라이브러리
+### Dependencies
+- `react-router-dom: ^6.13.0` : client side routing 을 간편하게 구현
+- `axios: ^1.4.0,` : Promise기반 HTTP 클라이언트
+
+### DevDependencies
+- `tailwindcss: ^3.3.2` : class name으로 빠른 스타일링 가능
+- `husky: ^8.0.3` : eslint, prettier cli를 통한 실행을 github에 커밋, 푸쉬할 때마다 자동화 함
+
+  <br/> <br/> <br/>
 
 # * 데모영상
 </br>
